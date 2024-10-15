@@ -15,15 +15,18 @@ class CategorySeeder extends Seeder
     {
         Category::create([
             'name'=>'Food',
-            'slug'=>'food'
+            'slug'=>'food',
+            'color'=>'red'
         ]);
         Category::create([
             'name'=>'Beverages',
-            'slug'=>'beverages'
+            'slug'=>'beverages',
+            'color'=>'green'
         ]);
         Category::create([
             'name'=>'Snack',
-            'slug'=>'snack'
+            'slug'=>'snack',
+            'color'=>'blue'
         ]);
     }
 }

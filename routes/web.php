@@ -15,7 +15,12 @@ Route::get('/about', function () {
 });
 
 Route::get('/posts', function () {
-    return view('posts', ['title' => 'Blog', 'posts' => Post::all()]);
+    //$post = Post::with(['category','author'])->latest()->get();
+    // $posts = Post::latest();
+    // if(request('search')){
+    //     $posts->where('title', 'like', '%' . request('search') . '%');
+    // }
+    return view('posts', ['title' => 'Blog', 'posts' => Post::filter(request(['search','category','author']))->latest()->paginate(5)->withQueryString()]);
 });
 
 Route::get('/posts/{post:slug}', function (Post $post) {
@@ -24,7 +29,7 @@ Route::get('/posts/{post:slug}', function (Post $post) {
 });
 
 Route::get('/authors/{user:username}', function (User $user) {
-
+    //$posts = $user->posts->load('category','author');
     return view('posts', ['title' => count($user->posts) . ' Articles by '. $user->name, 'posts' => $user->posts]);
 });
 
