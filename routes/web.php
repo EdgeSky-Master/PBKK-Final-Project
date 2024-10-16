@@ -4,7 +4,7 @@ use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\LoginController;
 
 Route::get('/', function () {
     return view('home', ['title' => 'Home']);
@@ -46,9 +46,9 @@ Route::get('/login', function () {
     return view('login', ['title' => 'Login']);
 });
 
-// Route::get('/login', [AuthController::class, 'login'])->name('login');
-// Route::post('loginAction', [AuthController::class, 'loginAction'])->name('loginAction');
-// Route::get('logoutAction', [AuthController::class, 'logoutAction'])->name('logoutAction')->middleware('auth');
+// Route::get('/login', [LoginController::class, 'login'])->name('login');
+// Route::post('loginAction', [LoginController::class, 'loginAction'])->name('loginAction');
+// Route::get('logoutAction', [LoginController::class, 'logoutAction'])->name('logoutAction')->middleware('auth');
 
 // Route::get('/registration', [RegisterController::class, 'registration'])->name('registration');
 // Route::post('registration', [RegisterController::class, 'registration'])->name('registration');
