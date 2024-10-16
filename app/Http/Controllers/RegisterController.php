@@ -5,14 +5,18 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class RegisterController extends Controller{
-    public function index(){
-        return view('register',[
+
+class RegisterController extends Controller
+{
+    public function index()
+    {
+        return view('register', [
             'title' => 'Register'
         ]);
     }
-    
-    public function store(Request $request){
+
+    public function store(Request $request)
+    {
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'username' => 'required|max:255|unique:users',
@@ -21,5 +25,5 @@ class RegisterController extends Controller{
         ]);
 
         User::create($validatedData);
-    }    
+    }
 }
