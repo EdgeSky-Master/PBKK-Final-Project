@@ -11,11 +11,11 @@ use Illuminate\Support\Facades\Session;
 
 class RegisterController extends Controller
 {
-    public function registration()
+    public function register()
     {
-        return view('registration');
+        return view('register');
     }
-    public function registrationAction(Request $request)
+    public function registerAction(Request $request)
     {
         $data = [
             'username' => $request->input('username'),

@@ -51,5 +51,5 @@ Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::post('loginAction', [LoginController::class, 'loginAction'])->name('loginAction');
 Route::get('logoutAction', [LoginController::class, 'logoutAction'])->name('logoutAction')->middleware('auth');
 
-Route::get('/registration', [RegisterController::class, 'registration'])->name('registration');
-Route::post('registration', [RegisterController::class, 'registration'])->name('registration');
+Route::get('/register', [RegisterController::class, 'register'])->name('register');
+Route::post('/register', [RegisterController::class, 'registerAction'])->name('registerAction');
