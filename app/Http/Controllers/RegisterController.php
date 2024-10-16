@@ -4,26 +4,30 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 
 class RegisterController extends Controller
 {
-    public function index()
+    public function registration()
     {
-        return view('register', [
-            'title' => 'Register'
-        ]);
+        return view('registration');
     }
-
-    public function store(Request $request)
+    public function registrationAction(Request $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|max:255',
-            'username' => 'required|max:255|unique:users',
-            'email' => 'required|email.dns|unique:users',
-            'password' => 'required|min:5|max:255'
-        ]);
+        $data = [
+            'username' => $request->input('username'),
+            'role' => $request->input('role'),
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'password' => $request->input('password'),
+        ];
 
-        User::create($validatedData);
+        if (Auth::Attempt($data)) {
+            Session::flash('error', 'You have been registered');
+            return redirect('/registration');
+        }
     }
 }
