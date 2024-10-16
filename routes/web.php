@@ -41,3 +41,7 @@ Route::get('/categories/{category:slug}', function (Category $category) {
 Route::get('/contact', function () {
     return view('contact', ['title' => 'Contact'], ['name' => 'Fawwaz Abdulloh Al-Jawi'], ['email' => 'faaljawi04@gmail.com']);
 });
+
+Route::get('/login', function () {
+    return view('login', ['title' => 'Login']);
+});
