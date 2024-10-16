@@ -5,6 +5,7 @@ use App\Models\User;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 
 Route::get('/', function () {
     return view('home', ['title' => 'Home']);
@@ -42,13 +43,13 @@ Route::get('/contact', function () {
     return view('contact', ['title' => 'Contact'], ['name' => 'Fawwaz Abdulloh Al-Jawi'], ['email' => 'faaljawi04@gmail.com']);
 });
 
-Route::get('/login', function () {
-    return view('login', ['title' => 'Login']);
-});
+// Route::get('/login', function () {
+//     return view('login', ['title' => 'Login']);
+// });
 
-// Route::get('/login', [LoginController::class, 'login'])->name('login');
-// Route::post('loginAction', [LoginController::class, 'loginAction'])->name('loginAction');
-// Route::get('logoutAction', [LoginController::class, 'logoutAction'])->name('logoutAction')->middleware('auth');
+Route::get('/login', [LoginController::class, 'login'])->name('login');
+Route::post('loginAction', [LoginController::class, 'loginAction'])->name('loginAction');
+Route::get('logoutAction', [LoginController::class, 'logoutAction'])->name('logoutAction')->middleware('auth');
 
-// Route::get('/registration', [RegisterController::class, 'registration'])->name('registration');
-// Route::post('registration', [RegisterController::class, 'registration'])->name('registration');
+Route::get('/registration', [RegisterController::class, 'registration'])->name('registration');
+Route::post('registration', [RegisterController::class, 'registration'])->name('registration');
